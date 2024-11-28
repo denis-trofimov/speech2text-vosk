@@ -43,17 +43,17 @@ Or use poetry:
 
 Also download and unzip the model for Russian speech recognition by running the commands:
 
-    curl -o ./model.zip https://alphacephei.com/vosk/models/vosk-model-ru-0.42.zip
-    unzip model.zip
-    mv vosk-model-ru-0.42/ model
-    rm -rf model.zip
+    curl -o ./model.zip https://alphacephei.com/vosk/models/vosk-model-ru-0.42.zip \
+    && unzip model.zip \
+    && mv vosk-model-ru-0.42/ model \
+    && rm -rf model.zip
 
 As a result of these actions, we copied the model to ourselves, unzipped it and renamed the directory. We also deleted the downloaded archive. After all, it weighs 1.5 GB. To arrange punctuation, we do similar actions: download another model weighing 1.5 GB.
 
-    curl -o recasepunc.zip https://alphacephei.com/vosk/models/vosk-recasepunc-ru-0.22.zip
-    unzip recasepunc.zip
-    mv vosk-recasepunc-ru-0.22/ recasepunc
-    rm -rf recasepunc.zip
+    curl -o recasepunc.zip https://alphacephei.com/vosk/models/vosk-recasepunc-ru-0.22.zip \
+    && unzip recasepunc.zip \
+    && mv vosk-recasepunc-ru-0.22/ recasepunc \
+    && rm -rf recasepunc.zip
 
 ## Usage
 
@@ -61,6 +61,36 @@ As a result of these actions, we copied the model to ourselves, unzipped it and 
 
   or
 
-    poetry run python3 samples/test.mp3
+    poetry run python3 transcribe.py samples/test.mp3
+
+## Help
+
+    $ python3 transcribe.py -h
+    usage: transcribe.py [-h] [-m MODEL] [-o OUTPUT] input
+
+    Transcribes speech to text. Распознает речь в текст
+
+    positional arguments:
+      input                 Speech audio input path
+
+    options:
+      -h, --help            show this help message and exit
+      -m MODEL, --model MODEL
+                            model path
+      -o OUTPUT, --output OUTPUT
+                            optional output text path
+
+    $ python3 predict_punctuation.py -h
+    usage: predict_punctuation.py [-h] [-o OUTPUT] input
+
+    Predicts text letters case and punctuation. Расставляет пунктуацию в тексте по подсказкам модели
+
+    positional arguments:
+      input                 plain text input path
+
+    options:
+      -h, --help            show this help message and exit
+      -o OUTPUT, --output OUTPUT
+                            optional output text path
 
 [article]: https://proglib.io/p/reshaem-zadachu-perevoda-russkoy-rechi-v-tekst-s-pomoshchyu-python-i-biblioteki-vosk-2022-06-30
