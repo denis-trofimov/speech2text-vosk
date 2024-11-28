@@ -93,4 +93,11 @@ As a result of these actions, we copied the model to ourselves, unzipped it and 
       -o OUTPUT, --output OUTPUT
                             optional output text path
 
+## Fixes
+
+To workaround a bug in "recasepunc/recasepunc.py" and not having to downgrade **transformers** version, please apply my patch, overwriting the original "recasepunc/recasepunc.py".
+It adds the keyword "strict=False" to every **model.load_state_dict** call.
+
+    cp patches/recasepunc.py recasepunc/recasepunc.py
+
 [article]: https://proglib.io/p/reshaem-zadachu-perevoda-russkoy-rechi-v-tekst-s-pomoshchyu-python-i-biblioteki-vosk-2022-06-30
